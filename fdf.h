@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 13:51:14 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:52:26 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # define FDF_H
 
+# define BUFF_SIZE 8
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <fcntl.h>
