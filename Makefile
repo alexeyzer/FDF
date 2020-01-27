@@ -6,11 +6,11 @@
 #    By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 22:26:44 by aguiller          #+#    #+#              #
-#    Updated: 2020/01/27 13:50:39 by aguiller         ###   ########.fr        #
+#    Updated: 2020/01/27 14:05:00 by aguiller         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c get_next_line.c
+SRC = main.c get_next_line.c validation.c
 
 NAME = fdf
 

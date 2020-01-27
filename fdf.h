@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 13:52:26 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:53:31 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 # include "minilibx_macos/mlx.h"
 
 int	get_next_line(const int fd, char **line);
+int valider(int fd);
 
 #endif

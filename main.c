@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 13:38:24 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/27 14:04:19 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		main(int argc, char **argv)
 	count = 0;
 	if ((fd = checkarg(argc, argv)) == 0)
 		return (0);
-		
+	if (valider(fd) < 0)
 	if (close(fd) < 0)
 		return (0);
 	if ((fd = checkarg(argc, argv)) == 0)
