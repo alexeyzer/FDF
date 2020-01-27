@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 13:23:42 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:38:24 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int		checkarg(int argc, char **argv)
 
 	if (argc <= 1)
 	{
-		ft_putendl("You should give as parametr file with tetriminos");
+		ft_putendl("Usage : ./fdf <filename> [ case_size z_size ]");
 		return (0);
 	}
 	if (argc > 2)
 	{
-		ft_putendl("fillit could work only with one file");
+		ft_putendl("Usage : ./fdf <filename> [ case_size z_size ]");
 		return (0);
 	}
 	fd = open(argv[1], O_RDONLY);
@@ -43,6 +43,7 @@ int		main(int argc, char **argv)
 	count = 0;
 	if ((fd = checkarg(argc, argv)) == 0)
 		return (0);
+		
 	if (close(fd) < 0)
 		return (0);
 	if ((fd = checkarg(argc, argv)) == 0)

@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   algos.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:39:04 by ehell             #+#    #+#             */
-/*   Updated: 2020/01/25 18:40:58 by ehell            ###   ########.fr       */
+/*   Updated: 2020/01/27 13:46:28 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <math.h>
-#include <stdlib.h>
-#include "mlx.h"
+#include <fdf.h>
 
 struct  s_koord
 {
