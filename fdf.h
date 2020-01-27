@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 13:45:50 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:51:14 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@
 # include "libft/libft.h"
 # include "minilibx_macos/mlx.h"
 
+int	get_next_line(const int fd, char **line);
 
 #endif
