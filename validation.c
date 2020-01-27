@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:52:54 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 14:53:43 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:01:52 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,75 @@
 
 #include <stdio.h>
 
-int checkline(char *line)
+char *make_line(char *line)
 {
-    int i;
+    int     i;
+    int     probel;
+    char    *new;
+    int     j;
 
+    i = 0;
+    j = 0;
+    probel = 0;
+    while (line[i])
+    {
+        if(line[i] == ' ')
+            probel++;
+        i++;
+    }
+    new = (char*)(malloc(sizeof(char) *(i - probel + 1)));
     i = 0;
     while (line[i])
     {
+        if(line[i] != ' ')
+            new[j++] = line[i];
         i++;
     }
-    return (i);
-
+    new[j] = '\0';
+    return (new);
 }
-
-int valider(int fd)
+int forfirst(int fd)
 {
     int i;
-    char    **lin;
-    char    *line;
+    char *new;
+    char *line;
 
-    i = 0;
     get_next_line(fd, &line);
-    printf("%s", line);
-    lin = ft_split_whitespaces(line);
-    
-    while(lin[i])
+    i = 0;
+    new = make_line(line);
+    free(line);
+    while(new[i])
     {
+        if (ft_isdigit(new[i])< 0)
+            return (-1);
         i++;
     }
+    free(new);
+    return (i);
+}
+int valider(int fd)
+{
+    int count;
+    char    *line;
+    char    *new;
+    int i;
 
+    if((count = forfirst(fd)) < 0)
+        return (-1);
+    while(get_next_line(fd, &line))
+    {
+        new = make_line(line);
+        free(line);
+        i = 0;
+        while(new[i])
+        {
+            if (ft_isdigit(new[i])< 0)
+                return (-1);
+            i++;
+        }
+        free(new);
+        if(i != count)
+            return (-1);
+    }
     return (0);
 }
