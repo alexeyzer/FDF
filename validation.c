@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:52:54 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/28 15:26:53 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:43:52 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int valid_onlydigits(int fd)
         i = 0;
         while(new[i])
         {
-            if ('0' > new[i] || new[i] > '9')
+            if (('0' > new[i] || new[i] > '9') && new[i] != '-')
                 return (-1);
             i++;
         }

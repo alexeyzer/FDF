@@ -6,38 +6,63 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:39:04 by ehell             #+#    #+#             */
-/*   Updated: 2020/01/28 15:37:34 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:59:42 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int read_tomass(int len_x, int len_y, int fd)
+t_koord **malloc_massiv(int x, int y)
 {
-    
+    int         i;
+    t_koord     **massive;
+
+    i = 0;
+    if(!(massive = (t_koord**)(malloc(sizeof(t_koord**) * y))))
+        return (NULL);
+    while(i < y)
+    {
+        if(!(massive[i] = (t_koord*)(malloc(sizeof(t_koord) * x))))
+            return (NULL);
+        i++;
+    }
+    return (massive);
 }
 
-// void brezen_alg( t_koord point1, t_koord point2, void *mlx_ptr, void *win_ptr)
-// {
-//     int err;
-//     int diry;
-//     t_koord point;
-  
-//     point = point1;
-//     err = 0;
-//     if (point2.y - point1.y >= 0)
-//         diry = 1;
-//     if (point2.y - point1.y < 0)
-//         diry = -1;
-//     while (point.x <= point2.x)
-//     {
-//         mlx_pixel_put(mlx_ptr, win_ptr, point.x, point.y, 0xFFFFFF);
-//         err = err + abs(point1.y - point2.y) + 1;
-//         if (err >= abs(point1.x - point2.x) + 1)
-//         {
-//             point.y = point.y + diry;
-//             err = err - (abs(point1.x - point2.x) + 1);
-//         }
-//         point.x++;
-//     }
-// }
+void parser(int fd, t_koord **massive)
+{
+    char *line;
+    int i;
+    int j;
+    int k;
+
+    i = 0;
+    while(get_next_line(fd, &line))
+    {
+        j = 0;
+        k = 0;
+        while (line[j])
+        {
+            if(line[j] != ' ')
+            {
+                massive[i][k].old_z = ft_atoi(&(line[j]));
+                k++;
+                while (line[j] != ' ' && line[j])
+                    j++;
+            }
+            else
+                j++;
+        }
+        i++;
+        free(line);
+    }
+}
+
+int read_tomass(int len_x, int len_y, int fd)
+{
+    t_koord **massive;
+
+    massive = malloc_massiv(len_x, len_y);
+    parser(fd, massive);
+    return (0);
+}

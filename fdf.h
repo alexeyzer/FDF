@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/28 15:25:29 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:59:41 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ typedef struct  s_koord
 int	get_next_line(const int fd, char **line);
 int valid_onlydigits(int fd);
 int valid_for_count(int fd, char *line);
-void brezen_alg( t_koord point1, t_koord point2, void *mlx_ptr, void *win_ptr);
+int read_tomass(int len_x, int len_y, int fd);
 
 #endif

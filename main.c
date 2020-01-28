@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/28 15:38:16 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:43:57 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,10 @@ void window()
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_koord p1;
-	t_koord p2;
 
 
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "LEL");
-	brezen_alg(p1, p2 , mlx_ptr, win_ptr);
-	//mlx_pixel_put(mlx_ptr, win_ptr, 0, 0,  0xFFFFF);
 	mlx_loop(mlx_ptr);
 }
 
@@ -67,7 +63,7 @@ int		main(int argc, char **argv)
 	}
 	if (close(fd) < 0)
 		return (0);
-	fd = checkarg(argc, argv)
+	fd = checkarg(argc, argv);
 	if ((len_x = valid_for_count(fd, line)) < 0)
 	{
 		ft_putendl("error");
