@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 13:53:31 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/27 23:36:13 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@
 # include "minilibx_macos/mlx.h"
 
 int	get_next_line(const int fd, char **line);
-int valider(int fd);
+int valid_onlydigits(int fd);
 
 #endif

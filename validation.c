@@ -6,7 +6,7 @@
 /*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:52:54 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 19:23:54 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/01/27 23:37:10 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char *make_line(char *line)
     return (new);
 }
 
-int valider(int fd)
+int valid_onlydigits(int fd)
 {
     char    *line;
     char    *new;

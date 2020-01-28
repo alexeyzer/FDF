@@ -6,7 +6,7 @@
 /*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 18:34:56 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/01/27 23:37:06 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		main(int argc, char **argv)
 	count = 0;
 	if ((fd = checkarg(argc, argv)) == 0)
 		return (0);
-	if (valider(fd) < 0)
+	if (valid_onlydigits(fd) < 0)
 	{
 		ft_putendl("error");
 		return (0);
