@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/28 16:43:57 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:51:57 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,10 @@ int		checkarg(int argc, char **argv)
 	}
 	return (fd);
 }
-
-void window()
+int err()
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-
-
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "LEL");
-	mlx_loop(mlx_ptr);
+	ft_putendl("error");
+	return (0);
 }
 
 int		main(int argc, char **argv)
@@ -57,18 +51,12 @@ int		main(int argc, char **argv)
 	if ((fd = checkarg(argc, argv)) == 0)
 		return (0);
 	if ((len_y = valid_onlydigits(fd)) < 0)
-	{
-		ft_putendl("error");
-		return (0);
-	}
+		return(err());
 	if (close(fd) < 0)
 		return (0);
 	fd = checkarg(argc, argv);
 	if ((len_x = valid_for_count(fd, line)) < 0)
-	{
-		ft_putendl("error");
-		return (0);
-	}
+		return(err());
 	if (close(fd) < 0)
 		return (0);
 	fd = checkarg(argc, argv);
