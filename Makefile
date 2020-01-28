@@ -6,11 +6,11 @@
 #    By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 22:26:44 by aguiller          #+#    #+#              #
-#    Updated: 2020/01/27 14:05:00 by aguiller         ###   ########.fr        #
+#    Updated: 2020/01/28 13:22:34 by aguiller         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c get_next_line.c validation.c
+SRC = main.c get_next_line.c validation.c algos.c
 
 NAME = fdf
 
@@ -21,7 +21,8 @@ all: $(NAME)
 $(NAME): $(OBJ) 
 	@cd libft && $(MAKE) all
 	@cd minilibx_macos && $(MAKE) all
-	@gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ) -L./libft -lft -L./minilibx_macos -lmlx
+	@gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ) -L./libft -lft \
+	-L./minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 %.o:%.c
 	@gcc -Wall -Wextra -Werror -c $< -o $@

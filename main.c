@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 23:37:06 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/01/28 15:38:16 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,47 @@ int		checkarg(int argc, char **argv)
 	return (fd);
 }
 
+void window()
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_koord p1;
+	t_koord p2;
+
+
+	mlx_ptr = mlx_init();
+	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "LEL");
+	brezen_alg(p1, p2 , mlx_ptr, win_ptr);
+	//mlx_pixel_put(mlx_ptr, win_ptr, 0, 0,  0xFFFFF);
+	mlx_loop(mlx_ptr);
+}
+
 int		main(int argc, char **argv)
 {
 	int		fd;
-	int		count;
+	char	*line;
+	int len_x;
+	int len_y;
 
-	count = 0;
+	line = NULL;
 	if ((fd = checkarg(argc, argv)) == 0)
 		return (0);
-	if (valid_onlydigits(fd) < 0)
+	if ((len_y = valid_onlydigits(fd)) < 0)
 	{
 		ft_putendl("error");
 		return (0);
 	}
 	if (close(fd) < 0)
 		return (0);
-	if ((fd = checkarg(argc, argv)) == 0)
+	fd = checkarg(argc, argv)
+	if ((len_x = valid_for_count(fd, line)) < 0)
+	{
+		ft_putendl("error");
 		return (0);
+	}
+	if (close(fd) < 0)
+		return (0);
+	fd = checkarg(argc, argv);
+	read_tomass(len_x, len_y, fd);
 	return (0);
 }

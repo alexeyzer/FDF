@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:52:54 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/27 23:37:10 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/01/28 15:26:53 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,12 @@ int valid_onlydigits(int fd)
     char    *line;
     char    *new;
     int i;
+    int len;
 
+    len = 0;
     while(get_next_line(fd, &line))
     {
+        len++;
         new = make_line(line);
         free(line);
         i = 0;
@@ -61,5 +64,60 @@ int valid_onlydigits(int fd)
         }
         free(new);
     }
+    return (len);
+}
+
+int for_first(int fd, int *a)
+{
+    char *line;
+    int     i;
+    int     slova;
+
+    slova = 0;
+    i = 0;
+    get_next_line(fd, &line);
+    while (line[i])
+    {
+        if(line[i] != ' ')
+        {
+            slova++;
+            while (line[i] != ' ' && line[i])
+                i++;
+        }
+        else
+            i++;
+    }
+    *a = slova;
+    free(line);
+    line = NULL;
     return (0);
+}
+
+int valid_for_count(int fd, char *line)
+{
+    int     i;
+    int     slova;
+    int     width;
+
+    i = for_first(fd, &width);
+    while(get_next_line(fd, &line))
+    {
+        i = 0;
+        slova = 0;
+        while (line[i])
+        {
+            if(line[i] != ' ')
+            {
+                slova++;
+                while (line[i] != ' ' && line[i])
+                    i++;
+            }
+            else
+                i++;
+        }
+        free(line);
+        if (width != slova)
+            return (-1);
+    }
+    return (width);
 }
