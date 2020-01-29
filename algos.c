@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algos.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:39:04 by ehell             #+#    #+#             */
-/*   Updated: 2020/01/28 18:01:23 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/29 12:13:07 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,8 @@ void parser(int fd, t_koord **massive)
 
 void to_iso(t_koord **massive, int y, int x)
 {
-    //massive[y][x].new_x = (x - y) * cos(0.523599);
-    massive[y][x].new_x = x;
-    //massive[y][x].new_y = massive[y][x].old_z + (x + y) * sin(0.523599);
-    massive[y][x].new_y = y;
+    massive[y][x].new_x = x * 5;
+    massive[y][x].new_y = y * 5;
 }
 
 void try_to_print(t_koord **massive, int x, int y)
@@ -78,15 +76,13 @@ void try_to_print(t_koord **massive, int x, int y)
     i = 0;
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 200, 200, "first");
-    while(i < y)
+    while(i < y - 1)
     {
         j = 0;
-        while(j < x)
+        while(j < x - 1)
         {
-            if (massive[i][j + 1].new_x)
-                brezen_alg(massive[i][j], massive[i][j + 1], mlx_ptr, win_ptr);
-            if (massive[i + 1][j].new_x)
-                brezen_alg(massive[i][j], massive[i + 1][j], mlx_ptr, win_ptr);
+            draw(massive[i][j], massive[i][j + 1], mlx_ptr, win_ptr);
+            draw(massive[i][j], massive[i + 1][j], mlx_ptr, win_ptr);
             j++;
         }
         i++;
@@ -114,29 +110,4 @@ int read_tomass(int len_x, int len_y, int fd)
     }
     try_to_print(massive, len_x, len_y);
     return (0);
-}
-
-void brezen_alg(t_koord point1, t_koord point2, void *mlx_ptr, void *win_ptr)
-{
-    int err;
-    int diry;
-    t_koord point;
-  
-    point = point1;
-    err = 0;
-    if (point2.new_y - point1.new_y >= 0)
-        diry = 1;
-    if (point2.new_y - point1.new_y < 0)
-        diry = -1;
-    while (point.new_x <= point2.new_x)
-    {
-        mlx_pixel_put(mlx_ptr, win_ptr, point.new_x, point.new_y, 0xFFFFFF);
-        err = err + abs(point1.new_x - point2.new_y) + 1;
-        if (err >= abs(point1.new_x - point2.new_x) + 1)
-        {
-            point.new_y = point.new_y + diry;
-            err = err - (abs(point1.new_x - point2.new_x) + 1);
-        }
-        point.new_x++;
-    }
 }
