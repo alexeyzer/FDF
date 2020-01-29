@@ -6,7 +6,7 @@
 /*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:39:04 by ehell             #+#    #+#             */
-/*   Updated: 2020/01/29 12:13:07 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/01/29 14:59:52 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void parser(int fd, t_koord **massive)
 
 void to_iso(t_koord **massive, int y, int x)
 {
-    massive[y][x].new_x = x * 5;
-    massive[y][x].new_y = y * 5;
+    massive[y][x].new_x = 250 + ((x - y) * cos(0.523599)) * 20;
+    massive[y][x].new_y = 250 + (-massive[y][x].old_z + ((x + y) * sin(0.523599))) * 20;
 }
 
 void try_to_print(t_koord **massive, int x, int y)
@@ -75,14 +75,16 @@ void try_to_print(t_koord **massive, int x, int y)
 
     i = 0;
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 200, 200, "first");
-    while(i < y - 1)
+	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "first");
+    while(i < y)
     {
         j = 0;
-        while(j < x - 1)
+        while(j < x)
         {
-            draw(massive[i][j], massive[i][j + 1], mlx_ptr, win_ptr);
-            draw(massive[i][j], massive[i + 1][j], mlx_ptr, win_ptr);
+            if(j + 1 < x)
+                draw(massive[i][j], massive[i][j + 1], mlx_ptr, win_ptr);
+            if (i + 1 < y)
+                draw(massive[i][j], massive[i + 1][j], mlx_ptr, win_ptr);
             j++;
         }
         i++;

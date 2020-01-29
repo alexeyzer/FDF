@@ -6,7 +6,7 @@
 /*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 11:25:25 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/01/29 11:57:27 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/01/29 14:08:07 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void draw_for_horizontal(t_koord point0, t_koord point1, void *mlx_ptr, void *wi
     err = 0;
     if (point1.new_y - point0.new_y >= 0)
         diry = 1;
+    else
+        diry = -1;
     while (point.new_x <= point1.new_x)
     {
         mlx_pixel_put(mlx_ptr, win_ptr, point.new_x, point.new_y, 0xFFFFFF);
@@ -46,6 +48,8 @@ void draw_for_vertical(t_koord point0, t_koord point1, void *mlx_ptr, void *win_
     err = 0;
     if (point1.new_x - point0.new_x >= 0)
         diry = 1;
+    else
+        diry = -1;
     while (point.new_y <= point1.new_y)
     {
         mlx_pixel_put(mlx_ptr, win_ptr, point.new_x, point.new_y, 0xFFFFFF);
