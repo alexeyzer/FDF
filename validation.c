@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:52:54 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/28 18:01:09 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/31 10:35:27 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-#include <stdio.h>
 
 char *make_line(char *line)
 {
@@ -50,7 +48,7 @@ int valid_onlydigits(int fd)
     int len;
 
     len = 0;
-    while(get_next_line(fd, &line))
+    while (get_next_line(fd, &line) > 0)
     {
         len++;
         new = make_line(line);
@@ -100,7 +98,7 @@ int valid_for_count(int fd, char *line)
     int     width;
 
     i = for_first(fd, &width);
-    while(get_next_line(fd, &line))
+    while(get_next_line(fd, &line) > 0)
     {
         i = 0;
         slova = 0;

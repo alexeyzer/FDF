@@ -6,13 +6,11 @@
 /*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:39:04 by ehell             #+#    #+#             */
-/*   Updated: 2020/01/29 14:59:52 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/01/31 19:56:44 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-#include <stdio.h>
 
 t_koord **malloc_massiv(int x, int y)
 {
@@ -60,56 +58,64 @@ void parser(int fd, t_koord **massive)
     }
 }
 
-void to_iso(t_koord **massive, int y, int x)
+void try_to_print(t_koord **massive, t_app *app)
 {
-    massive[y][x].new_x = 250 + ((x - y) * cos(0.523599)) * 20;
-    massive[y][x].new_y = 250 + (-massive[y][x].old_z + ((x + y) * sin(0.523599))) * 20;
-}
-
-void try_to_print(t_koord **massive, int x, int y)
-{
-    void	*mlx_ptr;
-	void	*win_ptr;
     int i;
     int j;
 
     i = 0;
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "first");
-    while(i < y)
+    while(i < app->max_y )
     {
         j = 0;
-        while(j < x)
+        while(j < app->max_x)
         {
-            if(j + 1 < x)
-                draw(massive[i][j], massive[i][j + 1], mlx_ptr, win_ptr);
-            if (i + 1 < y)
-                draw(massive[i][j], massive[i + 1][j], mlx_ptr, win_ptr);
+            if(j + 1 < app->max_x)
+                draw(massive[i][j], massive[i][j + 1], app);
+            if (i + 1 < app->max_y)
+                draw(massive[i][j], massive[i + 1][j], app);
             j++;
         }
         i++;
     }
-    mlx_loop(mlx_ptr);
 }
-int read_tomass(int len_x, int len_y, int fd)
+
+t_koord **read_tomass(int len_x, int len_y, int fd)
 {
     t_koord **massive;
-    int     i;
-    int     j;
 
     massive = malloc_massiv(len_x, len_y);
-    parser(fd, massive);
-    i = 0;
-    while(i < len_y)
+    parser(fd, massive); 
+    return (massive);
+}
+
+int event_key(int key, t_app *app)
+{
+    app->height = 500;
+    if (key == 53)
+        exit(0);
+    if (key == 35)
     {
-        j = 0;
-        while(j < len_x)
-        {
-            to_iso(massive, i, j);
-            j++;
-        }
-        i++;
+        erease(app);
+        to_paralell(app->massive, app);
+        try_to_print(app->massive, app);
     }
-    try_to_print(massive, len_x, len_y);
+    if(key == 34)
+    {
+        erease(app);
+        to_iso(app->massive, app);
+        try_to_print(app->massive, app);
+    }
     return (0);
+}
+
+void erease(t_app *app)
+{
+    app->color = 0;
+    try_to_print(app->massive, app);
+    app->color = 0xFFFFFF;
+}
+
+void setuper(t_app *app)
+{
+    mlx_key_hook(app->win_ptr, event_key, app);
 }

@@ -6,11 +6,11 @@
 #    By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 22:26:44 by aguiller          #+#    #+#              #
-#    Updated: 2020/01/29 11:49:38 by alexzudin        ###   ########.fr        #
+#    Updated: 2020/01/31 18:50:55 by alexzudin        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c get_next_line.c validation.c algos.c draw_line.c
+SRC = main.c get_next_line.c validation.c algos.c draw_line.c init.c
 
 NAME = fdf
 
