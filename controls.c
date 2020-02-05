@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 12:23:50 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/05 13:31:53 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/02/05 16:42:10 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int event_key(int key, t_app *app)
 {
-    app->height = 500;
     if (key == 53)
-        exit(0);
+        exit(quit(app));
     if (key == 35)
         app->projection = 'p';
     if (key == 34)
@@ -25,15 +24,22 @@ int event_key(int key, t_app *app)
         app->zoom = app->zoom + 1;
     if (key == 27)
         app->zoom = app->zoom - 1;
+    if (key == 13)
+        app->py = app->py - 3;
+    if (key == 1)
+        app->py = app->py + 3;
+    if (key == 2)
+        app->px = app->px + 3;
+    if (key == 0)
+        app->px = app->px - 3;
     return (reprint(app));
 }
 
 int reprint(t_app *app)
 {
-    erease(app);
     if (app->projection == 'I')
         to_iso(app->massive, app);
-    else
+    if (app->projection == 'P')
         to_paralell(app->massive, app);
     try_to_print(app->massive, app);
     return (0);
@@ -55,10 +61,10 @@ int quit(t_app *app)
     free (app);
     return (0);
 }
-
+/*
 void erease(t_app *app)
 {
     app->color = 0;
     try_to_print(app->massive, app);
     app->color = 0xFFFFFF;
-}
+}*/

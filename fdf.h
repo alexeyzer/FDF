@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/05 14:02:40 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/02/05 16:36:07 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,13 @@ typedef struct s_app
     int     zoom;
     int     max_x;
     int     max_y;
+    int     py;
+    int     px;
     char    projection;
     int     color;
     int	    max_z;
     int	    min_z;
+    char    *dadr;
     t_koord **massive;
 }              t_app;
 
@@ -62,5 +65,7 @@ void    setuper(t_app *app);
 int    event_key(int key, t_app *app);
 void    erease(t_app *app);
 int     reprint(t_app *app);
+int     quit(t_app *app);
+void	draw_background(t_app *app);
 
 #endif
