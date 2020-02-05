@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/05 12:28:41 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/02/05 13:28:03 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ typedef struct s_app
 {
     void	*mlx_ptr;
 	void	*win_ptr;
+    void	*im_ptr;
+    int	    bpp;
+    int	    size_line;
     int     height;
     int     width;
     int     zoom;
@@ -41,6 +44,8 @@ typedef struct s_app
     int     max_y;
     char    projection;
     int     color;
+    int	    max_z;
+    int	    min_z;
     t_koord **massive;
 }              t_app;
 

@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 12:23:50 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/05 12:40:51 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/02/05 13:31:53 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,21 @@ int reprint(t_app *app)
     return (0);
 }
 
-int quit(app t_app)
+int quit(t_app *app)
 {
+    t_koord **massive;
+    int i;  
 
+    massive = app->massive;
+    i = 0;
+    while (i < app->max_y)
+    {
+        free(massive[i]);
+        i++;
+    }
+    free(massive);
+    free (app);
+    return (0);
 }
 
 void erease(t_app *app)

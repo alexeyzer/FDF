@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:06:06 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/02/05 12:33:58 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/02/05 13:33:02 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ t_app *app_init(t_koord **massive, int x, int y)
 	app->zoom = 10;
 	app->max_x = x;
 	app->max_y = y;
-	app->color = 0xFFFFFF;
+	app->bpp = 16;
     app->projection = 'I';
+	app->size_line = app->bpp * app->max_x;
+	app->color = 0xFFFFFF;
 	app->massive = massive;
 	if(!(app->win_ptr = mlx_new_window(app->mlx_ptr, app->width, app->height, "fdf")))
 		return (NULL);
-
 	return (app);
 }
 

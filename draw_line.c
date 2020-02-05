@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 11:25:25 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/01/31 19:53:33 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/02/05 13:49:01 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+// void pixel_put(t_app *app, int x, int y)
+// {
+// 	char	*mass;
+// 	int	i;
+
+// 	i = app->size_line * y + app->bpp * x;
+// 	mass[i] = 0x0000;
+// 	mass[++i] = 0xFFFF;
+// 	mass[++i] = 0xFFFF;
+// 	mass[++i] = 0xFFFF;
+// 	/*есть новые координаты, z, z_min, z_max*/
+// 	/*обработать цвет и записать его на правильное место*/
+// }
+
+// void	draw_background(t_app *app)
+// {
+// 	char *mass;
+
+// 	mass = mlx_get_data_addr(app->im_ptr, app->bpp, app->size_line, 0);
+// 	ft_bzero(mass, app->size_line * app->max_y);
+// }
 
 void draw_for_horizontal(t_koord point0, t_koord point1, t_app *app)
 {
@@ -27,6 +49,7 @@ void draw_for_horizontal(t_koord point0, t_koord point1, t_app *app)
     while (point.new_x <= point1.new_x)
     {
         mlx_pixel_put(app->mlx_ptr, app->win_ptr, point.new_x, point.new_y, app->color);
+        //pixel_put(app, point.new_x, point.new_y);
         err = err + abs(point0.new_y - point1.new_y) + 1;
         if (err >= abs(point0.new_x - point1.new_x) + 1)
         {
@@ -53,6 +76,7 @@ void draw_for_vertical(t_koord point0, t_koord point1, t_app *app)
     while (point.new_y <= point1.new_y)
     {
         mlx_pixel_put(app->mlx_ptr, app->win_ptr, point.new_x, point.new_y, app->color);
+        //pixel_put(app, point.new_x, point.new_y);
         err = err + abs(point0.new_x - point1.new_x) + 1;
         if (err >= abs(point0.new_y - point1.new_y) + 1)
         {
@@ -71,6 +95,7 @@ void draw(t_koord point0, t_koord point1, t_app *app)
 
     dx = point1.new_x - point0.new_x;
     dy = point1.new_y - point0.new_y;
+    
     if (abs(dx) > abs(dy))
     {
         if (point0.new_x >point1.new_x)
