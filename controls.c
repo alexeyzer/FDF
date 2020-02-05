@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 12:23:50 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/05 12:32:59 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/02/05 12:40:51 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int reprint(t_app *app)
         to_paralell(app->massive, app);
     try_to_print(app->massive, app);
     return (0);
+}
+
+int quit(app t_app)
+{
+
 }
 
 void erease(t_app *app)
