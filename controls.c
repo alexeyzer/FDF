@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 12:23:50 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/05 16:42:10 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/05 17:19:38 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int event_key(int key, t_app *app)
     if (key == 53)
         exit(quit(app));
     if (key == 35)
-        app->projection = 'p';
+        app->projection = 'P';
     if (key == 34)
         app->projection = 'I';
     if (key == 24)
