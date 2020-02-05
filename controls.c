@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 12:23:50 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/05 17:19:38 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/02/05 17:24:51 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int quit(t_app *app)
         free(massive[i]);
         i++;
     }
+    mlx_destroy_image(app->mlx_ptr, app->im_ptr);
+    mlx_destroy_window(app->mlx_ptr, app->win_ptr);
     free(massive);
     free (app);
     return (0);
