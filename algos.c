@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algos.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:39:04 by ehell             #+#    #+#             */
-/*   Updated: 2020/01/31 19:56:44 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/02/05 12:25:30 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,33 +86,6 @@ t_koord **read_tomass(int len_x, int len_y, int fd)
     massive = malloc_massiv(len_x, len_y);
     parser(fd, massive); 
     return (massive);
-}
-
-int event_key(int key, t_app *app)
-{
-    app->height = 500;
-    if (key == 53)
-        exit(0);
-    if (key == 35)
-    {
-        erease(app);
-        to_paralell(app->massive, app);
-        try_to_print(app->massive, app);
-    }
-    if(key == 34)
-    {
-        erease(app);
-        to_iso(app->massive, app);
-        try_to_print(app->massive, app);
-    }
-    return (0);
-}
-
-void erease(t_app *app)
-{
-    app->color = 0;
-    try_to_print(app->massive, app);
-    app->color = 0xFFFFFF;
 }
 
 void setuper(t_app *app)

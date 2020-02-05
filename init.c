@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:06:06 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/01/31 19:52:32 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/02/05 12:33:58 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_app *app_init(t_koord **massive, int x, int y)
 	app->max_x = x;
 	app->max_y = y;
 	app->color = 0xFFFFFF;
+    app->projection = 'I';
 	app->massive = massive;
 	if(!(app->win_ptr = mlx_new_window(app->mlx_ptr, app->width, app->height, "fdf")))
 		return (NULL);
@@ -39,6 +40,8 @@ void to_iso(t_koord **massive, t_app *app)
 
     i = 0;
     j = 0;
+    if (app->zoom < 0)
+        app->zoom = 0;
     while(i < app->max_y)
     {
         j = 0;
@@ -59,6 +62,8 @@ void to_paralell(t_koord **massive, t_app *app)
 
     i = 0;
     j = 0;
+    if (app->zoom < 0)
+        app->zoom = 0;
     while(i < app->max_y)
     {
         j = 0;
