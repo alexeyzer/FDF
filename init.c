@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:06:06 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/02/05 17:19:56 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/02/05 18:37:22 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_app *app_init(t_koord **massive, int x, int y)
 	app = (t_app*)malloc(sizeof(t_app));
 	if(!(app->mlx_ptr = mlx_init()))
 		return (NULL);
-	app->width = 500;
-	app->height = 500;
+	app->width = 1200;
+	app->height = 1000;
 	app->zoom = 10;
 	app->max_x = x;
 	app->max_y = y;

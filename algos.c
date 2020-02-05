@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:39:04 by ehell             #+#    #+#             */
-/*   Updated: 2020/02/05 16:36:40 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/05 19:05:37 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void try_to_print(t_koord **massive, t_app *app)
     int j;
 
     i = 0;
-   draw_background(app);
+    make_menu(app);
+    draw_background(app);
     while(i < app->max_y )
     {
         j = 0;

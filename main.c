@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/05 16:34:49 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/05 19:31:53 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int working(int fd, int len_x, int len_y)
 
 	massive = read_tomass(len_x, len_y, fd);
 	app = app_init(massive, len_x, len_y);
+//	choose_zoom(app, massive);
 	to_iso(massive, app);
     try_to_print(massive, app);
 	setuper(app);

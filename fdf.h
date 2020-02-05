@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/05 16:36:07 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/05 19:31:45 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ void    erease(t_app *app);
 int     reprint(t_app *app);
 int     quit(t_app *app);
 void	draw_background(t_app *app);
+void    make_menu(t_app *app);
+//void    choose_zoom(t_app *app, t_koord **massive);
 
 #endif

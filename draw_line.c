@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 11:25:25 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/02/05 16:39:04 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/05 19:02:58 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void pixel_put(t_app *app, int x, int y)
 
 void	draw_background(t_app *app)
 {
-    ft_bzero(app->dadr, app->width * app->height * (app->bpp / 8));
+    ft_bzero(app->dadr, (app->width) * app->height * (app->bpp / 8));
 }
 
 void draw_for_horizontal(t_koord point0, t_koord point1, t_app *app)
@@ -108,5 +108,5 @@ void draw(t_koord point0, t_koord point1, t_app *app)
 			draw_for_vertical(point0, point1, app);
 
 	}
-    mlx_put_image_to_window(app->mlx_ptr, app->win_ptr, app->im_ptr, 0,0);
+    mlx_put_image_to_window(app->mlx_ptr, app->win_ptr, app->im_ptr, 200,0);
 }
