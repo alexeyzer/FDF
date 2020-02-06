@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/06 14:07:19 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 16:07:11 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ typedef struct s_app
     int	    max_z;
     int	    min_z;
     char    *dadr;
-    int     cent_x;
-    int     cent_y;
     t_koord **massive;
 }              t_app;
 
