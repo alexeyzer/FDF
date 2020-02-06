@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 12:23:50 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/06 13:01:32 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 15:02:23 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,15 @@ int event_key(int key, t_app *app)
     if (key == 53)
         exit(quit(app));
     if (key == 35)
+    {
         app->projection = 'P';
+        choose_zoom(app, app->massive);
+    }
     if (key == 34)
+    {
+        choose_zoom(app, app->massive);
         app->projection = 'I';
+    }
     if (key == 24)
         app->zoom = app->zoom + 1;
     if (key == 27)
@@ -81,31 +87,38 @@ void    choose_zoom(t_app *app, t_koord **massive)
 {
     int dx;
     int dy;
-    int disty;
 
-    disty = 0;
     dx = - ((app->width - 200) / 2 + ((0 - app->max_y) * cos(0.523599)) * app->zoom)
    + (app->width - 200) / 2 + ((app->max_x - 0) * cos(0.523599)) * app->zoom;
-    dy = - (app->height / 2 + (-massive[0][0].old_z + ((0 + 0) * sin(0.523599))) * app->zoom)
+    dy = - (app->height / 2 + (-massive[0][0].old_z))
     + app->height / 2 + (-massive[app->max_y - 1][app->max_x - 1].old_z + ((app->max_x + app->max_y) * sin(0.523599))) * app->zoom;
-    if (dy > abs(app->max_z - app->min_z))
-        disty = dy;
-    else if (dy < abs(app->max_z - app->min_z))
-        disty = abs(app->max_z - app->min_z);
-    else if (abs(app->min_z) + dy < abs(app->max_z + dy))
-        disty = abs(app->max_z + dy);
-    else if (dy < abs(app->max_z + dy))
-        disty = abs(app->min_z + dy);  
+    dy += abs(app->max_z - app->min_z) * app->zoom;
 
-    if (dx > disty && dx < app->width - 200)
+    if (app->projection == 'I')
     {
-         ft_putstr("here1\n");
-        app->zoom = (app->width - 200) / dx * app->zoom;
+       if (dx > dy)
+         app->zoom = (app->width - 200) / dx * app->zoom;
+       else if (dx < dy)
+            app->zoom = app->height / dy * app->zoom;
+      if (app->zoom == 0)
+         app->zoom = 1;
     }
-    else if (dx < disty &&  disty < app->height)
+    else
     {
-         ft_putstr("here2\n");
-        app->zoom = app->height / disty * app->zoom;
+        if (app->max_x > app->max_y)
+            app->zoom = (app->width - 200) / app->max_x * app->zoom;
+        else
+            app->zoom = app->height / app->max_y * app->zoom;
     }
-   ft_putnbr(app->zoom);
+    // if (dy - abs(app->max_z - app->min_z) * app->zoom < abs(app->max_z - app->min_z) * app->zoom)
+    // {
+    //     if (app->max_z > app->min_z)
+    //         app->cent_y = dy / 2;
+    //     else
+    //         app->cent_y = -dy / 2;        
+    // }
+//     app->cent_x = (-((0 - app->max_y) * cos(0.523599) * app->zoom)
+//    + ((app->max_x - 0) * cos(0.523599) * app->zoom)) / 2;
+    ft_putnbr(app->cent_y);
+    ft_putnbr(app->cent_x);
 }
