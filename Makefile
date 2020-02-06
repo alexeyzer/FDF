@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+         #
+#    By: ehell <ehell@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 22:26:44 by aguiller          #+#    #+#              #
-#    Updated: 2020/02/05 12:29:02 by aguiller         ###   ########.fr        #
+#    Updated: 2020/02/06 11:43:58 by ehell            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c get_next_line.c validation.c algos.c draw_line.c init.c controls.c
+SRC = main.c get_next_line.c validation.c algos.c draw_line.c init.c controls.c functions.c
 
 NAME = fdf
 
