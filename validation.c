@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:52:54 by aguiller          #+#    #+#             */
-/*   Updated: 2020/01/31 10:35:27 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/02/06 12:49:16 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int valid_onlydigits(int fd)
         i = 0;
         while(new[i])
         {
-            if (('0' > new[i] || new[i] > '9') && new[i] != '-')
+            if (('0' > new[i] || new[i] > '9') && (new[i] != '-' && new[i] != ',' && new[i] != 'x' && new[i] != 'a' &&
+            new[i] != 'b' && new[i] != 'c' && new[i] != 'd' &&  new[i] != 'e' && new[i] != 'F' && new[i] != 'f'))
                 return (-1);
             i++;
         }
