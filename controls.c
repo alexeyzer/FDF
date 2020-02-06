@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 12:23:50 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/06 11:45:05 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 12:17:17 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,26 +82,25 @@ void    choose_zoom(t_app *app, t_koord **massive)
     int dx;
     int dy;
 
-    dx = - (app->width / 2 + ((0 - app->max_y) * cos(0.523599)) * app->zoom)
-   + (app->width) / 2 + ((app->max_x - 0) * cos(0.523599)) * app->zoom;
+    dx = - ((app->width - 200) / 2 + ((0 - app->max_y) * cos(0.523599)) * app->zoom)
+   + (app->width - 200) / 2 + ((app->max_x - 0) * cos(0.523599)) * app->zoom;
     dy = - (app->height / 2 + (-massive[0][0].old_z + ((0 + 0) * sin(0.523599))) * app->zoom)
     + app->height / 2 + (-massive[app->max_y - 1][app->max_x - 1].old_z + ((app->max_x + app->max_y) * sin(0.523599))) * app->zoom;
 
-    ft_putnbr(abs(app->max_z + app->min_z));
     if (dx > dy && dx > app->max_z - app->min_z && dx < app->width - 200)
     {
          ft_putstr("here1\n");
-        app->zoom = (app->width - 200) / dx;
+        app->zoom = (app->width - 400) / dx * app->zoom;
     }
     else if (dx < dy && dy > app->max_z - app->min_z && dy < app->height)
     {
          ft_putstr("here2\n");
-        app->zoom = app->height / dy;
+        app->zoom = app->height / dy * app->zoom;
     }
     else if (dx < app->max_z - app->min_z && dy < app->max_z - app->min_z && dy < app->height)
     {
         ft_putstr("here3\n");
-        app->zoom = app->height / (app->max_z - app->min_z);
+        app->zoom = app->height / (app->max_z - app->min_z) * app->zoom;
     
     }ft_putnbr(app->zoom);
 }

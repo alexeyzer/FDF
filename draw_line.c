@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 11:25:25 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/02/05 19:02:58 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 12:23:24 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,4 @@ void draw(t_koord point0, t_koord point1, t_app *app)
 			draw_for_vertical(point0, point1, app);
 
 	}
-    mlx_put_image_to_window(app->mlx_ptr, app->win_ptr, app->im_ptr, 200,0);
 }

@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:06:06 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/02/05 18:37:22 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 12:16:27 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_app *app_init(t_koord **massive, int x, int y)
 	app = (t_app*)malloc(sizeof(t_app));
 	if(!(app->mlx_ptr = mlx_init()))
 		return (NULL);
-	app->width = 1200;
+	app->width = 1800;
 	app->height = 1000;
 	app->zoom = 10;
 	app->max_x = x;
@@ -55,7 +55,7 @@ void to_iso(t_koord **massive, t_app *app)
         j = 0;
         while(j < app->max_x)
         {
-            massive[i][j].new_x = app->width / 2 + ((j - i) * cos(0.523599)) * app->zoom;
+            massive[i][j].new_x = (app->width - 200) / 2 + ((j - i) * cos(0.523599)) * app->zoom;
             massive[i][j].new_y = app->height / 2 + (-massive[i][j].old_z + ((j + i) * sin(0.523599))) * app->zoom;
             j++;
         }

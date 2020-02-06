@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:39:04 by ehell             #+#    #+#             */
-/*   Updated: 2020/02/06 11:51:18 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 12:23:47 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void try_to_print(t_koord **massive, t_app *app)
         }
         i++;
     }
+    mlx_put_image_to_window(app->mlx_ptr, app->win_ptr, app->im_ptr, 200,0);
 }
 
 t_koord **read_tomass(int len_x, int len_y, int fd)
