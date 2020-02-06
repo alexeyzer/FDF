@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algos.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:39:04 by ehell             #+#    #+#             */
-/*   Updated: 2020/02/06 12:23:47 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 13:07:27 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void try_to_print(t_koord **massive, t_app *app)
     int j;
 
     i = 0;
-    draw_background(app);
+    ft_bzero(app->dadr, (app->width) * app->height * (app->bpp / 8));
     while(i < app->max_y )
     {
         j = 0;

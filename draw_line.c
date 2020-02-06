@@ -3,30 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 11:25:25 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/02/06 12:23:24 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 13:43:03 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void pixel_put(t_app *app, int x, int y)
+void pixel_put(t_app *app, int x, int y, char colour)
 {
 	char	*mass;
 	int	i;
 
     mass = app->dadr;
 	i = app->size_line * y + x * (app->bpp / 8);
-	mass[i] = 0xFF;
-	mass[++i] = 0xFF;
-	mass[++i] = 0xFF;
-}
-
-void	draw_background(t_app *app)
-{
-    ft_bzero(app->dadr, (app->width) * app->height * (app->bpp / 8));
+	mass[i] = 0xAA;
+	mass[++i] = colour;
+	mass[++i] = colour;
 }
 
 void draw_for_horizontal(t_koord point0, t_koord point1, t_app *app)
@@ -45,7 +40,7 @@ void draw_for_horizontal(t_koord point0, t_koord point1, t_app *app)
     {
         if (point.new_x + app->px < app->width && point.new_y + app->py < app->height &&
         point.new_x + app->px >= 0 && point.new_y + app->py >= 0)
-            pixel_put(app, point.new_x + app->px, point.new_y + app->py);
+           pixel_put(app, point.new_x + app->px, point.new_y + app->py, color(point0, point1, (point.new_y - point0.new_y) ,app->max_z));
         err = err + abs(point0.new_y - point1.new_y) + 1;
         if (err >= abs(point0.new_x - point1.new_x) + 1)
         {
@@ -54,7 +49,6 @@ void draw_for_horizontal(t_koord point0, t_koord point1, t_app *app)
         }
         point.new_x++;
     }
-
 }
 
 void draw_for_vertical(t_koord point0, t_koord point1, t_app *app)
@@ -73,7 +67,7 @@ void draw_for_vertical(t_koord point0, t_koord point1, t_app *app)
     {
         if (point.new_x + app->px < app->width && point.new_y + app->py < app->height &&
         point.new_x + app->px >= 0 && point.new_y + app->py >= 0)
-            pixel_put(app, point.new_x + app->px, point.new_y + app->py);
+            pixel_put(app, point.new_x + app->px, point.new_y + app->py, color(point0, point1, (point.new_y - point0.new_y) ,app->max_z));
         err = err + abs(point0.new_x - point1.new_x) + 1;
         if (err >= abs(point0.new_y - point1.new_y) + 1)
         {
@@ -82,7 +76,6 @@ void draw_for_vertical(t_koord point0, t_koord point1, t_app *app)
         }
         point.new_y++;
     }
-
 }
 
 void draw(t_koord point0, t_koord point1, t_app *app)

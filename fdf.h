@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/06 11:43:17 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 13:37:28 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,10 @@ int    event_key(int key, t_app *app);
 void    erease(t_app *app);
 int     reprint(t_app *app);
 int     quit(t_app *app);
-void	draw_background(t_app *app);
 void    make_menu(t_app *app);
 void    choose_zoom(t_app *app, t_koord **massive);
 void find_min_max(t_koord **massive, t_app *app);
+char color(t_koord p1, t_koord p2, int i, int max_z);
+void pixel_put(t_app *app, int x, int y, char colour);
 
 #endif

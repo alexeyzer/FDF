@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 13:26:57 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/06 11:44:30 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 13:42:38 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,17 @@ void find_min_max(t_koord **massive, t_app *app)
 	app->min_z = min;
 	app->max_z = max;
 }
+
+ char color(t_koord p1, t_koord p2, int i, int max_z)
+ {
+	char colour;
+
+	colour = 0x10;
+	if (p1.old_z == p2.old_z)
+		return (colour + (p1.old_z / max_z) * 100);
+	if (p1.old_z < p2.old_z)
+		return (colour + (p1.old_z / max_z) * 100 + 10 * i );
+	if (p1.old_z > p2.old_z)
+		return (colour + (p1.old_z / max_z) * 100 - 10 * i);
+	return (colour);
+ }
