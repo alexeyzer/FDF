@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:06:06 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/02/06 15:06:58 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 15:14:45 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void to_paralell(t_koord **massive, t_app *app)
         j = 0;
         while(j < app->max_x)
         {
-            massive[i][j].new_x = app->width / 2 + j * app->zoom;
-            massive[i][j].new_y = app->height / 2 + i * app->zoom;
+            massive[i][j].new_x = 250 + j * app->zoom;
+            massive[i][j].new_y = 400 + i * app->zoom;
             j++;
         }
         i++;

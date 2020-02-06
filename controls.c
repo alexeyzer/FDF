@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 12:23:50 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/06 15:02:23 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/06 15:20:12 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,28 +88,18 @@ void    choose_zoom(t_app *app, t_koord **massive)
     int dx;
     int dy;
 
+    app->zoom = 10;
     dx = - ((app->width - 200) / 2 + ((0 - app->max_y) * cos(0.523599)) * app->zoom)
    + (app->width - 200) / 2 + ((app->max_x - 0) * cos(0.523599)) * app->zoom;
     dy = - (app->height / 2 + (-massive[0][0].old_z))
     + app->height / 2 + (-massive[app->max_y - 1][app->max_x - 1].old_z + ((app->max_x + app->max_y) * sin(0.523599))) * app->zoom;
     dy += abs(app->max_z - app->min_z) * app->zoom;
-
-    if (app->projection == 'I')
-    {
        if (dx > dy)
          app->zoom = (app->width - 200) / dx * app->zoom;
        else if (dx < dy)
             app->zoom = app->height / dy * app->zoom;
       if (app->zoom == 0)
          app->zoom = 1;
-    }
-    else
-    {
-        if (app->max_x > app->max_y)
-            app->zoom = (app->width - 200) / app->max_x * app->zoom;
-        else
-            app->zoom = app->height / app->max_y * app->zoom;
-    }
     // if (dy - abs(app->max_z - app->min_z) * app->zoom < abs(app->max_z - app->min_z) * app->zoom)
     // {
     //     if (app->max_z > app->min_z)
@@ -119,6 +109,6 @@ void    choose_zoom(t_app *app, t_koord **massive)
     // }
 //     app->cent_x = (-((0 - app->max_y) * cos(0.523599) * app->zoom)
 //    + ((app->max_x - 0) * cos(0.523599) * app->zoom)) / 2;
-    ft_putnbr(app->cent_y);
-    ft_putnbr(app->cent_x);
+    // ft_putnbr(app->cent_y);
+    // ft_putnbr(app->cent_x);
 }
