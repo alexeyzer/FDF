@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/07 18:50:42 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/07 18:51:31 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,17 @@ int		main(int argc, char **argv)
 	if ((fd = checkarg(argc, argv)) == 0)
 		return (0);
 	if ((len_y = valid_onlydigits(fd)) < 0)
-		return(err());
+		return (err());
 	if (close(fd) < 0)
-		return(err());
+		return (err());
 	if ((fd = checkarg(argc, argv)) < 0)
-		return(err());
+		return (err());
 	if ((len_x = valid_for_count(fd, line)) < 0)
-		return(err());
+		return (err());
 	if (close(fd) < 0)
-		return(err());
+		return (err());
 	if ((fd = checkarg(argc, argv)) < 0)
-		return(err());
+		return (err());
 	working(fd, len_x, len_y);
 	return (0);
 }
