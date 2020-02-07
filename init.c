@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:06:06 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/02/07 19:20:39 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/07 19:55:13 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_app	*app_init(t_koord **massive, int x, int y, int endian)
 	app->bpp = 16;
 	app->px = 0;
 	app->py = 0;
-	app->beta = 0;
 	app->projection = 'I';
 	app->size_line = app->bpp * app->max_x * app->zoom;
 	if (!(app->im_ptr = mlx_new_image(app->mlx_ptr, app->width, app->height)))
@@ -63,30 +62,6 @@ void	to_iso(t_koord **massive, t_app *app)
 		i++;
 	}
 }
-
-// void	rotation(t_koord **massive, t_app *app)
-// {
-//     int i;
-//     int j;
-
-//     i = 0;
-//     j = 0;
-// 	while(i < app->max_y)
-//     {
-//         j = 0;
-//         while(j < app->max_x)
-//         {
-//             massive[i][j].new_x = (app->max_y * cos(0.523599)
-// 		+ (j - i)
-// 		* cos(app->beta)) * app->zoom;
-//             massive[i][j].new_y = (app->max_z - massive[i][j].old_z
-// 		+ ((j + i)
-// 		* sin(app->beta))) * app->zoom;
-//              j++;
-//         }
-//         i++;
-//     }
-// }
 
 void	to_paralell(t_koord **massive, t_app *app)
 {

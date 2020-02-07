@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/07 19:13:41 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/07 19:55:23 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct	s_app
 	int			py;
 	int			px;
 	int			f_zoom;
-	double		beta;
 	char		projection;
 	int			max_z;
 	int			min_z;
@@ -72,6 +71,5 @@ void			choose_zoom(t_app *app, t_koord **massive);
 void			find_min_max(t_koord **massive, t_app *app);
 char			color(t_koord p1, t_koord p2, int i, int max_z);
 void			pixel_put(t_app *app, int x, int y, char colour);
-void			rotation(t_koord **masiive, t_app *app);
 
 #endif
