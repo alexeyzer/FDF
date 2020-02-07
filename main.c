@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/07 18:51:31 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/07 19:14:08 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		working(int fd, int len_x, int len_y)
 	app = app_init(massive, len_x, len_y, 0);
 	find_min_max(massive, app);
 	choose_zoom(app, massive);
+	app->f_zoom = app->zoom;
 	to_iso(massive, app);
 	make_menu(app);
 	try_to_print(massive, app);

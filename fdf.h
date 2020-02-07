@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/07 18:46:20 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/07 19:13:41 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_app
 	int			max_y;
 	int			py;
 	int			px;
+	int			f_zoom;
 	double		beta;
 	char		projection;
 	int			max_z;

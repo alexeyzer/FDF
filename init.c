@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:06:06 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/02/07 18:48:41 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/07 19:20:39 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,43 +54,39 @@ void	to_iso(t_koord **massive, t_app *app)
 		j = 0;
 		while (j < app->max_x)
 		{
-			massive[i][j].new_x = (app->max_y * cos(0.523599) + (j - i)
-			* cos(0.523599)) * app->zoom;
-			massive[i][j].new_y = (app->max_z - massive[i][j].old_z + ((j + i)
-			* sin(0.523599))) * app->zoom;
+			massive[i][j].new_x = app->max_y * cos(0.523599) * app->f_zoom +
+			((j - i) * cos(0.523599)) * app->zoom;
+			massive[i][j].new_y = app->max_z * app->f_zoom +
+			(-massive[i][j].old_z + ((j + i) * sin(0.523599))) * app->zoom;
 			j++;
 		}
 		i++;
 	}
 }
 
-/*
-** void	rotation(t_koord **massive, t_app *app)
-** {
-** 	int x;
-** 	int y;
-**     int i;
-**     int j;
-**
-**     i = 0;
-**     j = 0;
-**   while(i < app->max_y)
-**     {
-**         j = 0;
-**         while(j < app->max_x)
-**         {
-**             massive[i][j].new_x = (app->max_y * cos(app->beta)
-**		+ (j - i)
-**		* cos(app->beta)) * app->zoom;
-**             massive[i][j].new_y = (app->max_z - massive[i][j].old_z
-**		+ ((j + i)
-**		* sin(app->beta))) * app->zoom;
-**             j++;
-**         }
-**         i++;
-**     }
-** }
-*/
+// void	rotation(t_koord **massive, t_app *app)
+// {
+//     int i;
+//     int j;
+
+//     i = 0;
+//     j = 0;
+// 	while(i < app->max_y)
+//     {
+//         j = 0;
+//         while(j < app->max_x)
+//         {
+//             massive[i][j].new_x = (app->max_y * cos(0.523599)
+// 		+ (j - i)
+// 		* cos(app->beta)) * app->zoom;
+//             massive[i][j].new_y = (app->max_z - massive[i][j].old_z
+// 		+ ((j + i)
+// 		* sin(app->beta))) * app->zoom;
+//              j++;
+//         }
+//         i++;
+//     }
+// }
 
 void	to_paralell(t_koord **massive, t_app *app)
 {
