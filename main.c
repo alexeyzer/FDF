@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/06 12:36:44 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/07 10:46:00 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int		checkarg(int argc, char **argv)
 
 	if (argc <= 1)
 	{
-		ft_putendl("Usage : ./fdf <filename> [ case_size z_size ]");
+		ft_putendl("Usage : ./fdf <filename>");
 		return (0);
 	}
 	if (argc > 4)
 	{
-		ft_putendl("Usage : ./fdf <filename> [ case_size z_size ]");
+		ft_putendl("Usage : ./fdf <filename>");
 		return (0);
 	}
 	fd = open(argv[1], O_RDWR);
