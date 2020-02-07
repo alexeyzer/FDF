@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:18 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/07 10:46:00 by alexzudin        ###   ########.fr       */
+/*   Updated: 2020/02/07 18:50:42 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		checkarg(int argc, char **argv)
 {
-	int fd;
+	int	fd;
 
 	if (argc <= 1)
 	{
@@ -35,28 +35,27 @@ int		checkarg(int argc, char **argv)
 	return (fd);
 }
 
-int err()
+int		err(void)
 {
 	ft_putendl("error");
 	return (0);
 }
 
-int working(int fd, int len_x, int len_y)
+int		working(int fd, int len_x, int len_y)
 {
 	t_app	*app;
-	t_koord **massive;
+	t_koord	**massive;
 
 	massive = read_tomass(len_x, len_y, fd);
-	app = app_init(massive, len_x, len_y);
+	app = app_init(massive, len_x, len_y, 0);
 	find_min_max(massive, app);
 	choose_zoom(app, massive);
 	to_iso(massive, app);
 	make_menu(app);
-    try_to_print(massive, app);
+	try_to_print(massive, app);
 	setuper(app);
 	mlx_loop(app->mlx_ptr);
 	return (0);
-
 }
 
 int		main(int argc, char **argv)
@@ -65,7 +64,7 @@ int		main(int argc, char **argv)
 	char	*line;
 	int		len_x;
 	int		len_y;
-	
+
 	line = NULL;
 	if ((fd = checkarg(argc, argv)) == 0)
 		return (0);

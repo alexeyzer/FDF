@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   functions.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 13:26:57 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/06 13:42:38 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/02/07 18:40:29 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void find_min_max(t_koord **massive, t_app *app)
+void	find_min_max(t_koord **massive, t_app *app)
 {
 	int	i;
 	int	j;
@@ -22,12 +22,11 @@ void find_min_max(t_koord **massive, t_app *app)
 	i = 0;
 	min = 2147483647;
 	max = -214783648;
-	while(i < app->max_y)
+	while (i < app->max_y)
 	{
 		j = 0;
-		while(j < app->max_x)
+		while (j < app->max_x)
 		{
-
 			if (massive[i][j].old_z < min)
 				min = massive[i][j].old_z;
 			if (massive[i][j].old_z > max)
@@ -40,16 +39,14 @@ void find_min_max(t_koord **massive, t_app *app)
 	app->max_z = max;
 }
 
- char color(t_koord p1, t_koord p2, int i, int max_z)
- {
-	char colour;
+char	color(t_koord p1, t_koord p2, int i, int max_z)
+{
+	char	colour;
 
 	colour = 0x10;
 	if (p1.old_z == p2.old_z)
 		return (colour + (p1.old_z / max_z) * 100);
-	if (p1.old_z < p2.old_z)
-		return (colour + (p1.old_z / max_z) * 100 + 10 * i );
 	if (p1.old_z > p2.old_z)
 		return (colour + (p1.old_z / max_z) * 100 - 10 * i);
 	return (colour);
- }
+}
