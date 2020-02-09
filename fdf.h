@@ -27,7 +27,10 @@ typedef struct	s_koord
 {
 	int			new_x;
 	int			new_y;
+	int			old_x;
+	int			old_y;
 	int			old_z;
+	int			color;
 }				t_koord;
 
 typedef struct	s_app
@@ -49,6 +52,7 @@ typedef struct	s_app
 	int			max_z;
 	int			min_z;
 	char		*dadr;
+	double		beta;
 	t_koord		**massive;
 }				t_app;
 
@@ -69,7 +73,8 @@ int				quit(t_app *app);
 void			make_menu(t_app *app);
 void			choose_zoom(t_app *app, t_koord **massive);
 void			find_min_max(t_koord **massive, t_app *app);
-char			color(t_koord p1, t_koord p2, int i, int max_z);
+char			color(t_koord p1, t_koord p2, int i);
 void			pixel_put(t_app *app, int x, int y, char colour);
+void			color_for_all(t_app *app);
 
 #endif

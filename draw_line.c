@@ -42,7 +42,7 @@ void	draw_for_horizontal(t_koord point0, t_koord point1, t_app *app)
 		point.new_y + app->py < app->height && point.new_x + app->px >= 0
 		&& point.new_y + app->py >= 0)
 			pixel_put(app, point.new_x + app->px, point.new_y + app->py,
-			color(point0, point1, (point.old_z - point0.old_z), app->max_z));
+			color(point0, point1, (point.old_z - point0.old_z)));
 		err = err + abs(point0.new_y - point1.new_y) + 1;
 		if (err >= abs(point0.new_x - point1.new_x) + 1)
 		{
@@ -71,7 +71,7 @@ void	draw_for_vertical(t_koord point0, t_koord point1, t_app *app)
 		point.new_y + app->py < app->height &&
 		point.new_x + app->px >= 0 && point.new_y + app->py >= 0)
 			pixel_put(app, point.new_x + app->px, point.new_y + app->py,
-			color(point0, point1, (point.new_y - point0.new_y), app->max_z));
+			color(point0, point1, (point.new_y - point0.new_y)));
 		err = err + abs(point0.new_x - point1.new_x) + 1;
 		if (err >= abs(point0.new_y - point1.new_y) + 1)
 		{

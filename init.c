@@ -39,24 +39,69 @@ t_app	*app_init(t_koord **massive, int x, int y, int endian)
 	return (app);
 }
 
+void	rotate(t_app *app)
+{
+	int	i;
+	int	j;
+	int	x;
+
+	i = 0;
+	while (i < app->max_y)
+	{
+		j = 0;
+		while (j < app->max_x)
+		{
+			x = app->massive[i][j].old_x;
+			app->massive[i][j].old_x = (x * cos(app->beta) -
+			app->massive[i][j].old_y * sin(app->beta));
+			app->massive[i][j].old_y = (x * sin(app->beta) +
+			app->massive[i][j].old_y * cos(app->beta));
+			j++;
+		}
+		i++;
+	}
+}
+
+void	make_old(t_app *app)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < app->max_y)
+	{
+		j = 0;
+		while (j < app->max_x)
+		{
+			app->massive[i][j].old_x = j * app->zoom;
+			app->massive[i][j].old_y = i * app->zoom;
+			j++;
+		}
+		i++;
+	}
+}
+
 void	to_iso(t_koord **massive, t_app *app)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	j = 0;
 	if (app->zoom < 0)
 		app->zoom = 0;
+	make_old(app);
+	if (app->beta != 0)
+		rotate(app);
+	i = 0;
 	while (i < app->max_y)
 	{
 		j = 0;
 		while (j < app->max_x)
 		{
 			massive[i][j].new_x = app->max_y * cos(0.523599) * app->f_zoom +
-			((j - i) * cos(0.523599)) * app->zoom;
+			(massive[i][j].old_x - massive[i][j].old_y) * cos(0.523599);
 			massive[i][j].new_y = app->max_z * app->f_zoom +
-			(-massive[i][j].old_z + ((j + i) * sin(0.523599))) * app->zoom;
+			(-massive[i][j].old_z * app->zoom + (massive[i][j].old_x + massive[i][j].old_y) * sin(0.523599));
 			j++;
 		}
 		i++;

@@ -39,14 +39,34 @@ void	find_min_max(t_koord **massive, t_app *app)
 	app->max_z = max;
 }
 
-char	color(t_koord p1, t_koord p2, int i, int max_z)
+void	color_for_all(t_app *app)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < app->max_y)
+	{
+		j = 0;
+		while (j < app->max_x)
+		{
+			app->massive[i][j].color = 0x10 + (app->massive[i][j].old_z - app->min_z) / (app->max_z - app->min_z) * (0xFF - 0x10);
+			if (app->massive[i][j].color < 0x59 && app->massive[i][j].color > 0x11)
+				ft_putstr("here");
+			j++;
+		}
+		i++;
+	}
+}
+
+char	color(t_koord p1, t_koord p2, int i)
 {
 	char	colour;
 
-	colour = 0x10;
+	colour = abs(p1.color - p2.color);
 	if (p1.old_z == p2.old_z)
-		return (colour + (p1.old_z / max_z) * 100);
-	if (p1.old_z > p2.old_z)
-		return (colour + (p1.old_z / max_z) * 100 - 10 * i);
-	return (colour);
+		return (p1.color);
+	else
+		return (p1.color + (1 - i / (p2.old_z - p1.old_z)) * colour);
 }

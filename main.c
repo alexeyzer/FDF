@@ -49,6 +49,7 @@ int		working(int fd, int len_x, int len_y)
 	massive = read_tomass(len_x, len_y, fd);
 	app = app_init(massive, len_x, len_y, 0);
 	find_min_max(massive, app);
+	color_for_all(app);
 	choose_zoom(app, massive);
 	app->f_zoom = app->zoom;
 	to_iso(massive, app);

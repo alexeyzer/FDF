@@ -84,7 +84,11 @@ void	try_to_print(t_koord **massive, t_app *app)
 t_koord	**read_tomass(int len_x, int len_y, int fd)
 {
 	t_koord **massive;
+	int		i;
+	int		j;
 
+	i = 0;
+	j = 0;
 	massive = malloc_massiv(len_x, len_y);
 	parser(fd, massive);
 	return (massive);

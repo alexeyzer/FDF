@@ -38,6 +38,10 @@ int		event_key(int key, t_app *app)
 		app->px = app->px + 3;
 	if (key == 0)
 		app->px = app->px - 3;
+	if (key == 12)
+		app->beta = app->beta - 0.05;
+	if (key == 14)
+		app->beta = app->beta + 0.05;
 	return (reprint(app));
 }
 
