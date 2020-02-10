@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 13:26:57 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/10 16:20:38 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/10 16:32:20 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	find_min_max(t_koord **massive, t_app *app)
 
 void	color_for_all(t_app *app)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	double	proc1;
 	double	proc2;
 	double	proc3;
@@ -80,4 +80,13 @@ char	color(t_koord p1, t_koord p2, int i)
 		ret = p1.color + temp * (p2.color - p1.color);
 		return (ret);
 	}
+}
+
+int		event_key_2(int key, t_app *app)
+{
+	if (key == 12)
+		app->beta = app->beta - 0.05;
+	if (key == 14)
+		app->beta = app->beta + 0.05;
+	return (reprint(app));
 }

@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:18:28 by aguiller          #+#    #+#             */
-/*   Updated: 2020/02/10 16:20:44 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/10 16:32:04 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ void			find_min_max(t_koord **massive, t_app *app);
 char			color(t_koord p1, t_koord p2, int i);
 void			pixel_put(t_app *app, int x, int y, char colour);
 void			color_for_all(t_app *app);
+int				event_key_2(int key, t_app *app);
 
 #endif

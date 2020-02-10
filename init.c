@@ -6,7 +6,7 @@
 /*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:06:06 by alexzudin         #+#    #+#             */
-/*   Updated: 2020/02/07 19:55:13 by ehell            ###   ########.fr       */
+/*   Updated: 2020/02/10 16:30:04 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ void	to_iso(t_koord **massive, t_app *app)
 			massive[i][j].new_x = app->max_y * cos(0.523599) * app->f_zoom +
 			(massive[i][j].old_x - massive[i][j].old_y) * cos(0.523599);
 			massive[i][j].new_y = app->max_z * app->f_zoom +
-			(-massive[i][j].old_z * app->zoom + (massive[i][j].old_x + massive[i][j].old_y) * sin(0.523599));
+			(-massive[i][j].old_z * app->zoom + (massive[i][j].old_x +
+			massive[i][j].old_y) * sin(0.523599));
 			j++;
 		}
 		i++;
